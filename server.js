@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require('mongoose');
+const routes = require('./routes')
 require('dotenv').config();
 
 
@@ -30,8 +31,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
 );
 
 // API Routes
-// app.use(routes);
-
+app.use(routes);
 
 // Send every request to the React app
 // Define any API routes before this runs
