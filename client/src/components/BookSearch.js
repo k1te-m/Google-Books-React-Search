@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { FormBtn, Input } from './Form';
 import ResultsContainer from './ResultsContainer';
 const baseURL = 'https://www.googleapis.com/books/v1/volumes?q=';
-const MY_KEY = process.env.REACT_APP_API_KEY_GOOGLE_BOOKS
 
 const BookSearch = () => {
     const [userInput, setUserInput] = useState({
@@ -29,7 +28,6 @@ const BookSearch = () => {
         } else {
             try{
             let results = await axios.get(baseURL + book.replace(/\s/g, ''));
-            console.log(baseURL + book.replace(/\s/g, '+'))
             googleBooksArray = await results.data.items;
             setSearchedBooks({...searchedBooks, searchedBooks: googleBooksArray})
             }
@@ -49,7 +47,7 @@ const BookSearch = () => {
                         <Input 
                             onChange={handleInputChange}
                             name='book'
-                            placeholder='Where the Wild Things Are'
+                            placeholder='Thinking, Fast and Slow'
                             value={book}
                         />
                         <FormBtn
