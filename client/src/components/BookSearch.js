@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Input } from './Form';
 
 const BookSearch = () => {
-    // const [userInput, setUserInput] = useState({
-    //     book: ''
-    // })
+    const [userInput, setUserInput] = useState({
+        book: ''
+    })
     // const [searchedBooks, setSearchedBooks] = useState({
     //     searchedBooks: [],
     // })
 
     // let booksArray:any = [];
 
-    // const { book } = userInput;
+    const { book } = userInput;
 
-    // const handleInputChange = (event:any) => {
-    //     const { name, value } = event.target;
-    //     setUserInput({...userInput, [name]: value});
-    // }
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setUserInput({...userInput, [name]: value});
+    }
 
     // const handleFormSubmit = (event:any) => {
     //     event.preventDefault();
@@ -38,8 +39,12 @@ const BookSearch = () => {
             <div className="row">
                 <form>
                     <div className='form-row'>
-                        <input />
-                        <button>Search</button>
+                        <Input 
+                            onChange={handleInputChange}
+                            name='book'
+                            placeholder='Where the Wild Things Are'
+                            value={book}
+                        />
                     </div>
                 </form>
             </div>
