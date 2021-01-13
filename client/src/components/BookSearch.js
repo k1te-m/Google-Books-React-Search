@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input } from './Form';
+import { FormBtn, Input } from './Form';
 
 const BookSearch = () => {
     const [userInput, setUserInput] = useState({
@@ -18,18 +18,10 @@ const BookSearch = () => {
         setUserInput({...userInput, [name]: value});
     }
 
-    // const handleFormSubmit = (event:any) => {
-    //     event.preventDefault();
-    //     if (!book) {
-    //         return
-    //     } else {
-            
-    //         API.getBooks().then(results => {
-    //             booksArray.push(results);
-    //             setSearchedBooks({...searchedBooks, searchedBooks: booksArray})
-    //         })
-    //     }
-    // }
+    const handleFormSubmit = (event, userInput) => {
+        event.preventDefault();
+        
+    }
 
     return (
         <div className="container">
@@ -45,6 +37,9 @@ const BookSearch = () => {
                             placeholder='Where the Wild Things Are'
                             value={book}
                         />
+                        <FormBtn>
+                            Search
+                        </FormBtn>
                     </div>
                 </form>
             </div>
