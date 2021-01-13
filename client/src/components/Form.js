@@ -10,3 +10,11 @@ export function Input(props) {
         </div>
     )
 }
+
+export function FormBtn(props) {
+    return (
+        <button {...props}>
+            {props.children}
+        </button>
+    )
+}
