@@ -6,30 +6,76 @@ const SavedBooksDiv = styled.div`
   border: 1px solid black;
 `;
 
+const BookCard = styled.div`
+  height: auto;
+  overflow: auto;
+`;
+
+const BookImage = styled.img`
+  position: absoulte;
+  top: 0%;
+  width: 128px;
+  max-height: 200px;
+`;
+
 const SavedBooksContainer = () => {
-    const [savedBooks, setSavedBooks] = useState({})
+  const [savedBooks, setSavedBooks] = useState([]);
 
-    let books = {};
+  let books = [];
 
-    const getBooks = () => {
-        API.getBooks().then((response) => {
-            books = response.data;
-            setSavedBooks(books);
-        })
-    }
+  const getBooks = () => {
+    API.getBooks().then((response) => {
+      books = response.data;
+      setSavedBooks(books);
+    });
+  };
 
-    useEffect(() => {
-        getBooks();
-    },[])
+  useEffect(() => {
+    getBooks();
+  }, []);
 
-    return (
-        <SavedBooksDiv className='container'>
-            <div className='row'>
-                <h5>Saved Books</h5>
+  return (
+    <SavedBooksDiv className="container">
+      <div className="row">
+        <h5>Saved Books</h5>
+      </div>
+      <div className="row">
+        {savedBooks.map((book) => (
+          <BookCard className="card">
+            <div className="row">
+              <div className="col">
+                <h5>{book.title}</h5>
+                <span>Written by: </span>
+                {book.authors.map((author) => (
+                  <span>{author}</span>
+                ))}
+              </div>
+              <div className="col d-flex justify-content-end">
+                <a
+                  href={book.previewLink}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <button>View</button>
+                </a>
+                <a>
+                  <button>Delete</button>
+                </a>
+              </div>
             </div>
-
-        </SavedBooksDiv>
-    )
-}
+            <div className="row">
+              <div className="col-3 d-flex justify-content-center">
+                <BookImage src={book.image} />
+              </div>
+              <div className="col-9">
+                <p>{book.description}</p>
+              </div>
+            </div>
+          </BookCard>
+        ))}
+      </div>
+    </SavedBooksDiv>
+  );
+};
 
 export default SavedBooksContainer;
