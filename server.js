@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const routes = require('./routes')
 
 
-
 //Express
 const app = express();
 
@@ -20,6 +19,15 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// API Routes
+app.use(routes);
+
+// Send every request to the React app
+// Define any API routes before this runs
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", 
   {
@@ -29,16 +37,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
     useFindAndModify: false,
   }
 );
-
-// API Routes
-app.use(routes);
-
-
-// Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
 
 app.listen(PORT, () => {
   if (process.env.NODE_ENV !== "production") {
