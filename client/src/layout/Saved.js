@@ -1,8 +1,9 @@
 import React from 'react';
+import SavedBooksContainer from '../components/SavedBooksContainer';
 
 const Saved = () => {
     return (
-        <p>hello world</p>
+        <SavedBooksContainer />
     )
 }
 
