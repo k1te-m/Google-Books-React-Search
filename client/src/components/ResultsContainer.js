@@ -53,6 +53,7 @@ const ResultsContainer = (props) => {
   };
 
   const results = props.results.searchedBooks;
+  
   return (
     <ResultsContainerDiv className="container">
       <div className="row">
@@ -60,14 +61,12 @@ const ResultsContainer = (props) => {
       </div>
       <div className="row">
         {results.map((book) => (
-          <BookCard className="card">
+          <BookCard className="card" key={book.id}>
             <div className="row">
               <div className="col">
                 <h5>{book.volumeInfo.title}</h5>
                 <span>Written by: </span>
-                {book.volumeInfo.authors.map((author) => (
-                  <span>{author}</span>
-                ))}
+                <span>{book.volumeInfo.authors.join(", ")}</span>
               </div>
               <div className="col d-flex justify-content-end">
                 <a
