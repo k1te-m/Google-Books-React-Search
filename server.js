@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require('mongoose');
 const routes = require('./routes')
-require('dotenv').config();
+
 
 
 //Express
@@ -33,12 +33,15 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
 // API Routes
 app.use(routes);
 
+
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function() {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+app.listen(PORT, () => {
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`Server listening at http://localhost:${PORT}`);
+  }
 });
