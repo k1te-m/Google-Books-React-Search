@@ -30,6 +30,13 @@ const SavedBooksContainer = () => {
     });
   };
 
+  const deleteBook = (book) => {
+    const id = book._id;
+    API.deleteBook(id)
+       .then(res => getBooks())
+       .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     getBooks();
   }, []);
@@ -41,25 +48,24 @@ const SavedBooksContainer = () => {
       </div>
       <div className="row">
         {savedBooks.map((book) => (
-          <BookCard className="card">
+          <BookCard className="card" key={book._id}>
+            {console.log(book)}
             <div className="row">
               <div className="col">
                 <h5>{book.title}</h5>
                 <span>Written by: </span>
-                {book.authors.map((author) => (
-                  <span>{author}</span>
-                ))}
+                <span>
+                  {book.authors
+                    ? book.authors.join(", ")
+                    : ""}
+                </span>
               </div>
               <div className="col d-flex justify-content-end">
-                <a
-                  href={book.previewLink}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href={book.previewLink} target="_blank" rel="noreferrer">
                   <button>View</button>
                 </a>
                 <a>
-                  <button>Delete</button>
+                  <button onClick={() => deleteBook(book)}>Delete</button>
                 </a>
               </div>
             </div>
