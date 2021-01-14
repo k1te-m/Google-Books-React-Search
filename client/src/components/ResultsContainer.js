@@ -66,7 +66,7 @@ const ResultsContainer = (props) => {
               <div className="col">
                 <h5>{book.volumeInfo.title}</h5>
                 <span>Written by: </span>
-                <span>{book.volumeInfo.authors.join(", ")}</span>
+                <span>{book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : ''}</span>
               </div>
               <div className="col d-flex justify-content-end">
                 <a
@@ -83,7 +83,7 @@ const ResultsContainer = (props) => {
             </div>
             <div className="row">
               <div className="col-3 d-flex justify-content-center">
-                <BookImage src={book.volumeInfo.imageLinks.thumbnail} />
+                <BookImage src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'}  />
               </div>
               <div className="col-9">
                 <p>{book.volumeInfo.description}</p>
