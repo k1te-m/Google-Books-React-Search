@@ -7,7 +7,6 @@ module.exports = {
       .catch((error) => res.status(422).json(error));
   },
   saveBook: (req, res) => {
-    console.log(req.body);
     db.Book.create(req.body)
       .then((book) => {
         res.json(book);

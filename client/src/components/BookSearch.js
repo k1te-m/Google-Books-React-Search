@@ -30,7 +30,6 @@ const BookSearch = () => {
             let results = await axios.get(baseURL + book.replace(/\s/g, ''));
             googleBooksArray = await results.data.items;
             setSearchedBooks({...searchedBooks, searchedBooks: googleBooksArray})
-            console.log(googleBooksArray)
             }
             catch (error) {
                 console.error(error);
