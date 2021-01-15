@@ -61,7 +61,7 @@ const SavedBooksContainer = () => {
                 </span>
               </div>
               <div className="col d-flex justify-content-end">
-                <a href={book.previewLink} target="_blank" rel="noreferrer">
+                <a href={book.link} target="_blank" rel="noreferrer">
                   <button>View</button>
                 </a>
                 <a>
