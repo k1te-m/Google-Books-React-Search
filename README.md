@@ -8,7 +8,7 @@
   ## Table of Contents
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Future Development](#future development)
+  * [Future Development](#future)
   * [Contributing](#contributing)
   * [Tests](#tests)
   * [Questions](#questions)
