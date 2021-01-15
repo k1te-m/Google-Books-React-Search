@@ -23,6 +23,11 @@
   *Examples of project use:*
 
   Will Update
+  
+  ## Future Develpment
+  
+  -Add authentication to the application to allow for personal saved books in database.
+  -Update CSS/Styled-Components 
 
   ## Contributing
 
