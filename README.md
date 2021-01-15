@@ -3,7 +3,7 @@
   ![GitHub](https://img.shields.io/github/license/k1te-m/Google-Books-React-Search)![GitHub top language](https://img.shields.io/github/languages/top/k1te-m/Google-Books-React-Search)
 
   ## Description
-  React application utilizing NodeJS, Express, and MongoDB that allows users to query and display books from the Google Books API. Users are given various information about each bookand are able to save books that they like or want to read for future reference.
+  React application utilizing NodeJS, Express, and MongoDB that allows users to query and display books from the Google Books API. Users are given various information about each book and are able to save books that they like or want to read for future reference.
 
   ## Table of Contents
   * [Installation](#installation)
