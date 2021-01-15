@@ -8,6 +8,7 @@
   ## Table of Contents
   * [Installation](#installation)
   * [Usage](#usage)
+  * [Future Development(#future)
   * [Contributing](#contributing)
   * [Tests](#tests)
   * [Questions](#questions)
@@ -24,10 +25,10 @@
 
   Will Update
   
-  ## Future Develpment
+  ## Future Development
   
-  -Add authentication to the application to allow for personal saved books in database.
-  -Update CSS/Styled-Components 
+  *Add authentication to the application to allow for personal saved books in database.
+  *Update CSS/Styled-Components 
 
   ## Contributing
 
