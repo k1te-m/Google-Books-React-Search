@@ -27,8 +27,8 @@
   
   ## Future Development
   
-  *Add authentication to the application to allow for personal saved books in database.
-  *Update CSS/Styled-Components 
+  - Add authentication to the application to allow for personal saved books in database.
+  - Update CSS/Styled-Components 
 
   ## Contributing
 
