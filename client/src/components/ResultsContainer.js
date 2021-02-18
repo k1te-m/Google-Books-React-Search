@@ -3,7 +3,20 @@ import styled from "styled-components";
 import API from "../utils/API";
 
 const ResultsContainerDiv = styled.div`
-  border: 1px solid black;
+  .card {
+    border: 1px solid #212529;
+  }
+`;
+
+const StyledRow = styled.div`
+  background-color: #212529;
+  color: white;
+`;
+
+const StyledButton = styled.button`
+  background-color: #212529;
+  color: white;
+  border-radius: 5px;
 `;
 
 const BookImage = styled.img`
@@ -53,12 +66,12 @@ const ResultsContainer = (props) => {
   };
 
   const results = props.results.searchedBooks;
-  
+
   return (
     <ResultsContainerDiv className="container">
-      <div className="row">
+      <StyledRow className="row">
         <h5>Results</h5>
-      </div>
+      </StyledRow>
       <div className="row">
         {results.map((book) => (
           <BookCard className="card" key={book.id}>
@@ -66,7 +79,11 @@ const ResultsContainer = (props) => {
               <div className="col">
                 <h5>{book.volumeInfo.title}</h5>
                 <span>Written by: </span>
-                <span>{book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : ''}</span>
+                <span>
+                  {book.volumeInfo.authors
+                    ? book.volumeInfo.authors.join(", ")
+                    : ""}
+                </span>
               </div>
               <div className="col d-flex justify-content-end">
                 <a
@@ -74,16 +91,24 @@ const ResultsContainer = (props) => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <button>View</button>
+                  <StyledButton>View</StyledButton>
                 </a>
                 <a>
-                  <button onClick={() => saveBook(book)}>Save</button>
+                  <StyledButton onClick={() => saveBook(book)}>
+                    Save
+                  </StyledButton>
                 </a>
               </div>
             </div>
             <div className="row">
               <div className="col-3 d-flex justify-content-center">
-                <BookImage src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150'}  />
+                <BookImage
+                  src={
+                    book.volumeInfo.imageLinks
+                      ? book.volumeInfo.imageLinks.thumbnail
+                      : "https://via.placeholder.com/150"
+                  }
+                />
               </div>
               <div className="col-9">
                 <p>{book.volumeInfo.description}</p>

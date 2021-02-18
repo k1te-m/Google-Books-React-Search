@@ -2,6 +2,17 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import API from "../utils/API";
 
+const StyledRow = styled.div`
+  background-color: #212529;
+  color: white;
+`;
+
+const StyledButton = styled.button`
+  background-color: #212529;
+  color: white;
+  border-radius: 5px;
+`;
+
 const SavedBooksDiv = styled.div`
   border: 1px solid black;
 `;
@@ -33,9 +44,9 @@ const SavedBooksContainer = () => {
   const deleteBook = (book) => {
     const id = book._id;
     API.deleteBook(id)
-       .then(res => getBooks())
-       .catch(err => console.log(err))
-  }
+      .then((res) => getBooks())
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     getBooks();
@@ -43,9 +54,9 @@ const SavedBooksContainer = () => {
 
   return (
     <SavedBooksDiv className="container">
-      <div className="row">
+      <StyledRow className="row">
         <h5>Saved Books</h5>
-      </div>
+      </StyledRow>
       <div className="row">
         {savedBooks.map((book) => (
           <BookCard className="card" key={book._id}>
@@ -54,18 +65,16 @@ const SavedBooksContainer = () => {
               <div className="col">
                 <h5>{book.title}</h5>
                 <span>Written by: </span>
-                <span>
-                  {book.authors
-                    ? book.authors.join(", ")
-                    : ""}
-                </span>
+                <span>{book.authors ? book.authors.join(", ") : ""}</span>
               </div>
               <div className="col d-flex justify-content-end">
                 <a href={book.link} target="_blank" rel="noreferrer">
-                  <button>View</button>
+                  <StyledButton>View</StyledButton>
                 </a>
                 <a>
-                  <button onClick={() => deleteBook(book)}>Delete</button>
+                  <StyledButton onClick={() => deleteBook(book)}>
+                    Delete
+                  </StyledButton>
                 </a>
               </div>
             </div>
